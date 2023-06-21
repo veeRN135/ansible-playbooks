@@ -1,2 +1,35 @@
 ---
-env: test
+- name: Create and configure virtual environment
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    venv_name: my_virtual_env
+
+  tasks:
+    - name: Create virtual environment
+      command: python3 -m venv {{ venv_name }}
+
+    - name: Activate virtual environment
+      command: source {{ venv_name }}/bin/activate
+      args:
+        executable: /bin/bash
+      changed_when: false
+
+    - name: Upgrade pip
+      pip:
+        name: pip
+        state: latest
+
+    - name: Install ansible-core
+      pip:
+        name: ansible-core
+        state: present
+
+    - name: Install ansible collections
+      ansible.builtin.shell:
+        cmd: |
+          source {{ venv_name }}/bin/activate && \
+          ansible-galaxy collection install ansible.posix && \
+          ansible-galaxy collection install confluent-platform:7.3.3
