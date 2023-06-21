@@ -1,0 +1,27 @@
+---
+- name: Install Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Install Python and required dependencies
+      become: true
+      package:
+        name:
+          - python3
+          - python3-pip
+          - python3-venv
+        state: present
+
+    - name: Upgrade pip
+      become: true
+      pip:
+        name: pip
+        state: latest
+
+    - name: Install Ansible
+      become: true
+      pip:
+        name: ansible
+        state: present
