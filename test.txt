@@ -1,4 +1,20 @@
-Kafka scaling | Enterprise-grade scaling |
+Comparison Report: IBM MQ vs. Kafka vs. Amazon MQ vs. Amazon SQS vs. Amazon Kinesis vs. Amazon Firehose vs. Amazon MSK vs. Confluent Kafka
+
+1. Overview of Messaging & Streaming Systems
+
+| Feature         | IBM MQ | Kafka | Amazon MQ | Amazon SQS | Amazon Kinesis | Amazon Firehose | Amazon MSK | Confluent Kafka |
+|---------------|-----------|---------|------------|-----------|------------|----------------|----------------|----------------|
+| Type | Traditional Message Queue | Distributed Event Streaming | Managed Message Broker | Fully Managed Message Queue | Real-time Data Streaming | Managed Data Ingestion & Delivery | Managed Kafka (AWS) | Enterprise Kafka (Managed & Self-hosted) |
+| Best For | Enterprise messaging, transactional processing | High-throughput event streaming | Migrating legacy MQ-based apps to the cloud | Decoupling microservices, serverless apps | Real-time event processing & analytics | Fully managed data streaming into AWS services | Managed Kafka without operational overhead | Scalable Kafka with enterprise features |
+| Delivery Model | Point-to-Point & Pub/Sub | Pub/Sub | Point-to-Point & Pub/Sub | Point-to-Point | Pub/Sub | Pub/Sub | Pub/Sub | Pub/Sub |
+
+2. Feature Comparison
+
+| Feature  | IBM MQ | Kafka | Amazon MQ | Amazon SQS | Amazon Kinesis | Amazon Firehose | Amazon MSK | Confluent Kafka |
+|---------|----------|--------|------------|----------|------------|----------------|----------------|----------------|
+| Message Durability | Persistent & durable | Durable with configurable retention | Persistent storage | Highly durable | Durable for streaming data | Persistent storage with auto-scaling | Durable with configurable retention | Durable with advanced tiering |
+| Ordering | Guaranteed | Not guaranteed (partition-based) | FIFO & non-FIFO | FIFO & non-FIFO | Maintains order within a shard | Maintains order | Partition-based ordering | Partition-based ordering |
+| Scalability | Medium (complex setup) | Highly scalable | Scales vertically | Automatically scales | Scales horizontally with shards | Automatically scales | Managed Kafka scaling | Enterprise-grade scaling |
 | Latency | Low to Medium | Low | Low | Low | Low (milliseconds) | Low | Low | Low |
 | Protocol Support | JMS, MQTT, AMQP | Custom Kafka protocol | JMS, AMQP, MQTT | HTTP-based API | HTTP-based API | HTTP-based API | Kafka protocol | Kafka protocol |
 | Reliability | High (with transactions & persistence) | High but depends on replication | High (managed by AWS) | High (managed by AWS) | High (shard-based) | High (managed by AWS) | High | High |
